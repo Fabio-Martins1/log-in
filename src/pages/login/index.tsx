@@ -5,12 +5,16 @@ import FormItem from "antd/es/form/FormItem";
 import {UserOutlined} from "@ant-design/icons";
 
 import styles from "./Login.module.css"
+import {useNavigate} from "react-router-dom";
 
 export const Login = () => {
+
+  const navigate = useNavigate()
   function onFinish() {
     notification.open({
       message: "Tudo certo!"
     });
+    navigate("/")
   }
 
   function onFinishFailed() {
