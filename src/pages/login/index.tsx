@@ -1,8 +1,9 @@
 import React from "react";
-import {Form, notification} from "antd";
+import {Form, Input, notification} from "antd";
 import FormItem from "antd/es/form/FormItem";
+import {Link} from "react-router-dom";
 
-export default function Login(){
+export const Login = () => {
     function onFinish() {
         notification.open({
             message: "Tudo certo!"
@@ -28,6 +29,10 @@ export default function Login(){
                     label={"Usuário"}
                     name={"username"}
                     rules={[{required:true, type: "email", message: "Entre com um e-mail válido"}]}>
+                    <Input />
+                </FormItem>
+                <FormItem>
+                    <Link to={"/createAccount"}>Registre-se</Link>
                 </FormItem>
             </Form>
         </div>
