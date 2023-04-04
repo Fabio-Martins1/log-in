@@ -5,7 +5,6 @@ import {PageProvider} from "./PageProvider";
 const primary = "#FFA119";
 const primaryDark = "#A66200";
 const dark = "#1C1C1C";
-const link = "#FFC570";
 
 export const App = () => {
   return (
