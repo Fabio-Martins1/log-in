@@ -1,0 +1,15 @@
+.create_account_container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 4em;
+}
+.create_account_form_container{
+  width: 30%;
+  margin-top: 5%;
+  padding: 4em;
+  background-color: #FFA119;
+  border-radius: 40px;
+  box-shadow: 1px 1px 10px 1px;
+}
