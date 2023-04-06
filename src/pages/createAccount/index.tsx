@@ -1,22 +1,23 @@
 import React from "react"
-import {Button, Col, Form, notification, Row} from "antd";
 
 import styles from "./CreateAccount.module.css"
+
+import {Button, Col, Form, Input, notification, Row} from "antd";
 import {useNavigate} from "react-router-dom";
-import {fields} from "./Fields";
+import {fieldsCreateAccount} from "./FieldsCreateAccount";
 import {FieldGenerator} from "../FieldGenerator";
+import {ArrowLeftOutlined} from "@ant-design/icons";
 
 export const CreateAccount = () => {
   const navigate = useNavigate()
 
-
-  const onFinish = (values: any): void => {
+  const onFinish = (): void => {
     notification.open({
       message: "Tudo certo!"
     });
     navigate("/")
   };
-  const onFinishFailed = (values: any): void => {
+  const onFinishFailed = (): void => {
 
   };
   const prev = (): void => {
@@ -33,16 +34,19 @@ export const CreateAccount = () => {
               onFinishFailed={onFinishFailed}
               autoComplete={"off"}
           >
-            <FieldGenerator fieldsList={fields} />
+            <FieldGenerator fieldsList={fieldsCreateAccount}/>
+            <Form.Item label={"teste"} labelCol={{offset: 20, span: 20}}>
+              <Input/>
+            </Form.Item>
             <Row gutter={24}>
               <Col span={10}>
-                <Form.Item>
-                  <Button block size={"large"} type={"primary"} htmlType={"submit"}>Avançar</Button>
+                <Form.Item wrapperCol={{offset: 0, span: 30}}>
+                  <Button block size={"large"} type={"default"} onClick={() => prev()}><ArrowLeftOutlined/> </Button>
                 </Form.Item>
               </Col>
-              <Col span={8}>
-                <Form.Item wrapperCol={{offset: 24}}>
-                  <Button block size={"large"} type={"default"} onClick={() => prev()}>Voltar</Button>
+              <Col span={14}>
+                <Form.Item>
+                  <Button block size={"large"} type={"primary"} htmlType={"submit"}>Avançar</Button>
                 </Form.Item>
               </Col>
             </Row>

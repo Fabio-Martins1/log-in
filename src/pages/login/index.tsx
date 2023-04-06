@@ -1,21 +1,24 @@
 import React from "react";
 
 import styles from "./Login.module.css"
+
 import {useNavigate} from "react-router-dom";
-import {Button, Checkbox, Form, Input, notification} from "antd";
-import {UserOutlined} from "@ant-design/icons";
+import {Button, Form, notification} from "antd";
+import {LoginOutlined, UserAddOutlined} from "@ant-design/icons";
+import {FieldGenerator} from "../FieldGenerator";
+import {fieldsLogin} from "./FieldsLogin";
 
 export const Login = () => {
 
   const navigate = useNavigate()
 
-  const onFinish = () =>{
+  const onFinish = ():void => {
     notification.open({
       message: "Tudo certo!"
     });
     navigate("/")
   }
-  const onFinishFailed = () =>{
+  const onFinishFailed = ():void => {
     notification.open({
       message: "Algo deu errado!",
       description: "Preencha os campos corretamente!"
@@ -33,35 +36,14 @@ export const Login = () => {
               onFinishFailed={onFinishFailed}
               autoComplete={"off"}
           >
-            <Form.Item
-                label={"Usuário"}
-                name={"username"}
-                rules={[{required: true, type: "email", message: "Entre com um e-mail válido!"}]}
-                hasFeedback
-            >
-              <Input
-                  size={"large"}
-                  placeholder={"Entre com o usuário!"}
-                  prefix={<UserOutlined/>}/>
+            <FieldGenerator fieldsList={fieldsLogin}/>
+
+            <Form.Item wrapperCol={{offset: 2, span: 20}}>
+              <Button block size={"large"} type={"primary"} htmlType={"submit"}>Entrar<LoginOutlined/> </Button>
             </Form.Item>
-            <Form.Item
-                label={"Senha"}
-                name={"password"}
-                rules={[{required: true, message: "Entre com uma senha válida!"}]}
-                hasFeedback
-            >
-              <Input.Password
-                  size={"large"}
-              />
-            </Form.Item>
-            <Form.Item name={"remember"} valuePropName={"checked"}>
-              <Checkbox>Lembrar senha</Checkbox>
-            </Form.Item>
-            <Form.Item wrapperCol={{offset: 4, span: 16}}>
-              <Button block size={"large"} type={"primary"} htmlType={"submit"}>Entrar</Button>
-            </Form.Item>
-            <Form.Item wrapperCol={{offset: 7}}>
-              <Button type={"ghost"} href={"/createAccount"}>Registre-se</Button>
+            <Form.Item wrapperCol={{offset: 6, span: 12}}>
+              <Button block size={"large"} type={"default"}
+                      href={"/createAccount"}>Registre-se <UserAddOutlined/></Button>
             </Form.Item>
           </Form>
         </div>

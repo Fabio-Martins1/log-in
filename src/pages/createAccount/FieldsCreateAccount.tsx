@@ -1,7 +1,8 @@
 import {IFields} from "../Interfaces";
+
 const cpfRegex = /^\d{3}.?\d{3}.?\d{3}-?\d{2}$/
 
-export const fields: IFields[] = [
+export const fieldsCreateAccount: IFields[] = [
 
   {
     type: "input",
@@ -14,7 +15,7 @@ export const fields: IFields[] = [
     wrapperSpan: 0,
     wrapperOffset: 0,
     hasFeedback: false,
-    rules: [{required:true,message:"Entre com o seu nome completo!"}]
+    rules: [{required: true, message: "Entre com o seu nome completo!"}]
   },
   {
     type: "input",
@@ -43,12 +44,12 @@ export const fields: IFields[] = [
     label: "",
     size: "large",
     placeholder: "01/01/2023",
-    format:"DD/MM/YYYY",
+    format: "DD/MM/YYYY",
     rowGutter: 0,
     colSpan: 24,
     wrapperSpan: 0,
     wrapperOffset: 4,
     hasFeedback: false,
-    rules: [{required:true,type:"date",message:"Entre com sua data de nascimento!"}]
+    rules: [{required: true, type: "date", message: "Entre com sua data de nascimento!"}]
   }
 ]
