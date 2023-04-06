@@ -8,7 +8,6 @@ export const fieldsLogin: IFields[] = [
     label: "Usuário",
     size: "large",
     placeholder: "Entre com o seu usuário",
-    rowGutter: 0,
     colSpan: 24,
     wrapperSpan: 0,
     wrapperOffset: 0,
@@ -22,22 +21,31 @@ export const fieldsLogin: IFields[] = [
     label: "Senha",
     size: "large",
     placeholder: "Entre com a sua senha",
-    rowGutter: 0,
     colSpan: 24,
     wrapperSpan: 0,
     wrapperOffset: 0,
     prefix: <><LockOutlined/></>,
     rules: [{required: true, message: "Entre com a sua senha!", min: 8}]
-  }, {
+  },
+  {
     type: "checkbox",
     name: "rememberMe",
     valuePropName: "checked",
     label: "",
     size: "large",
     placeholder: "Lembrar senha",
-    rowGutter: 0,
-    colSpan: 24,
+    colSpan: 12,
     wrapperSpan: 0,
     wrapperOffset: 0,
   },
+  {
+    type: "link",
+    name: "forgetPassword",
+    label: "",
+    placeholder: "Esqueci minha senha",
+    colSpan: 12,
+    wrapperSpan: 0,
+    wrapperOffset: 0,
+  },
+
 ]

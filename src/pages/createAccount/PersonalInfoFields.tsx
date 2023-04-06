@@ -1,4 +1,4 @@
-import {IFields} from "../../Interfaces";
+import {IFields} from "../Interfaces";
 
 const cpfRegex = /^(\d{3})(\d{3})(\d{3})(\d{2})$/
 
@@ -10,7 +10,6 @@ export const personalInfoFields: IFields[] = [
     label: "Nome completo",
     size: "large",
     placeholder: "Entre com o seu nome completo",
-    rowGutter: 0,
     colSpan: 24,
     wrapperSpan: 0,
     wrapperOffset: 0,
@@ -22,7 +21,6 @@ export const personalInfoFields: IFields[] = [
     label: "CPF",
     size: "large",
     placeholder: "Entre com o seu CPF",
-    rowGutter: 0,
     colSpan: 24,
     wrapperSpan: 24,
     wrapperOffset: 0,
@@ -44,7 +42,6 @@ export const personalInfoFields: IFields[] = [
     size: "large",
     placeholder: "",
     format: "DD/MM/YYYY",
-    rowGutter: 0,
     colSpan: 24,
     wrapperSpan: 12,
     wrapperOffset: 0,
@@ -56,7 +53,6 @@ export const personalInfoFields: IFields[] = [
     label: "E-mail",
     size: "large",
     placeholder: "Entre com o seu e-mail",
-    rowGutter: 0,
     colSpan: 24,
     wrapperSpan: 0,
     wrapperOffset: 0,
@@ -69,7 +65,6 @@ export const personalInfoFields: IFields[] = [
     label: "E-mail reserva",
     size: "large",
     placeholder: "Entre com o seu e-mail reserva",
-    rowGutter: 0,
     colSpan: 24,
     wrapperSpan: 0,
     wrapperOffset: 0,

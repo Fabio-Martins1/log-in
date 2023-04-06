@@ -4,10 +4,11 @@ import styles from "./CreateAccount.module.css"
 
 import {Button, Col, Form, notification, Row} from "antd";
 import {useNavigate} from "react-router-dom";
-import {personalInfoFields} from "./fields/PersonalInfoFields";
+import {personalInfoFields} from "./PersonalInfoFields";
 import {FieldGenerator} from "../FieldGenerator";
-import {ArrowLeftOutlined} from "@ant-design/icons";
-import {adressInfoFields} from "./fields/AdressInfoFields";
+import {ArrowLeftOutlined, ArrowRightOutlined} from "@ant-design/icons";
+import {adressInfoFields} from "./AdressInfoFields";
+import {loginInfoFields} from "./LoginInfoFields";
 
 export const CreateAccount = () => {
   const [page, setPage] = useState<number>(0)
@@ -18,15 +19,14 @@ export const CreateAccount = () => {
       setPage(1);
     }
     if (page === 1) {
-      setPage(2)
+      setPage(2);
     }
-    if(page === 2){
+    if (page === 2) {
       notification.success({
         message: "Tudo certo!"
       });
-      navigate("/login")
+      navigate("/login");
     }
-
   };
   const onFinishFailed = (): void => {
     notification.error({
@@ -34,7 +34,15 @@ export const CreateAccount = () => {
     });
   };
   const prev = (): void => {
-    navigate("/login")
+    if (page === 0) {
+      navigate("/login");
+    }
+    if (page === 1) {
+      setPage(0);
+    }
+    if (page === 2) {
+      setPage(1);
+    }
   };
   return (
       <div className={styles.create_account_container}>
@@ -48,7 +56,8 @@ export const CreateAccount = () => {
               autoComplete={"off"}
           >
             {page === 0 ? (<FieldGenerator fieldsList={personalInfoFields}/>) : page === 1 ? (
-                <FieldGenerator fieldsList={adressInfoFields} />) : (<></>)}
+                <FieldGenerator fieldsList={adressInfoFields}/>) : (
+                <FieldGenerator fieldsList={loginInfoFields}></FieldGenerator>)}
             <Row gutter={24}>
               <Col span={10}>
                 <Form.Item wrapperCol={{offset: 0, span: 15}}>
@@ -62,15 +71,16 @@ export const CreateAccount = () => {
                   />
                 </Form.Item>
               </Col>
-              <Col span={14}>
+              <Col offset={10} span={1}>
                 <Form.Item>
                   <Button block
-                          shape={"round"}
+                          shape={"circle"}
                           size={"large"}
                           type={"primary"}
                           htmlType={"submit"}
                           id={"backButton"}
-                  >Avançar</Button>
+                          icon={<ArrowRightOutlined/>}
+                  />
                 </Form.Item>
               </Col>
             </Row>
