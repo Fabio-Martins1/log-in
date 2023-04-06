@@ -12,14 +12,14 @@ export const Login = () => {
 
   const navigate = useNavigate()
 
-  const onFinish = ():void => {
-    notification.open({
-      message: "Tudo certo!"
+  const onFinish = (): void => {
+    notification.success({
+      message: "Bem-vindo!"
     });
     navigate("/")
   }
-  const onFinishFailed = ():void => {
-    notification.open({
+  const onFinishFailed = (): void => {
+    notification.error({
       message: "Algo deu errado!",
       description: "Preencha os campos corretamente!"
     });
@@ -39,11 +39,22 @@ export const Login = () => {
             <FieldGenerator fieldsList={fieldsLogin}/>
 
             <Form.Item wrapperCol={{offset: 2, span: 20}}>
-              <Button block size={"large"} type={"primary"} htmlType={"submit"}>Entrar<LoginOutlined/> </Button>
+              <Button block
+                      size={"large"}
+                      shape={"round"}
+                      type={"primary"}
+                      htmlType={"submit"}
+                      icon={<LoginOutlined/>}
+              >Entrar</Button>
             </Form.Item>
             <Form.Item wrapperCol={{offset: 6, span: 12}}>
-              <Button block size={"large"} type={"default"}
-                      href={"/createAccount"}>Registre-se <UserAddOutlined/></Button>
+              <Button block
+                      size={"large"}
+                      shape={"round"}
+                      type={"default"}
+                      href={"/createAccount"}
+                      icon={<UserAddOutlined/>}
+              >Registre-se</Button>
             </Form.Item>
           </Form>
         </div>

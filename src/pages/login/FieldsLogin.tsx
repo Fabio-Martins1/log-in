@@ -30,7 +30,7 @@ export const fieldsLogin: IFields[] = [
     rules: [{required: true, message: "Entre com a sua senha!", min: 8}]
   }, {
     type: "checkbox",
-    name: "remember",
+    name: "rememberMe",
     valuePropName: "checked",
     label: "",
     size: "large",

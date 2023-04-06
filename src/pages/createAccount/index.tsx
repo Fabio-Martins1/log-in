@@ -1,24 +1,37 @@
-import React from "react"
+import React, {useState} from "react"
 
 import styles from "./CreateAccount.module.css"
 
-import {Button, Col, Form, Input, notification, Row} from "antd";
+import {Button, Col, Form, notification, Row} from "antd";
 import {useNavigate} from "react-router-dom";
-import {fieldsCreateAccount} from "./FieldsCreateAccount";
+import {personalInfoFields} from "./fields/PersonalInfoFields";
 import {FieldGenerator} from "../FieldGenerator";
 import {ArrowLeftOutlined} from "@ant-design/icons";
+import {adressInfoFields} from "./fields/AdressInfoFields";
 
 export const CreateAccount = () => {
+  const [page, setPage] = useState<number>(0)
   const navigate = useNavigate()
 
   const onFinish = (): void => {
-    notification.open({
-      message: "Tudo certo!"
-    });
-    navigate("/")
+    if (page === 0) {
+      setPage(1);
+    }
+    if (page === 1) {
+      setPage(2)
+    }
+    if(page === 2){
+      notification.success({
+        message: "Tudo certo!"
+      });
+      navigate("/login")
+    }
+
   };
   const onFinishFailed = (): void => {
-
+    notification.error({
+      message: "Preencha os campos corretamente"
+    });
   };
   const prev = (): void => {
     navigate("/login")
@@ -34,19 +47,30 @@ export const CreateAccount = () => {
               onFinishFailed={onFinishFailed}
               autoComplete={"off"}
           >
-            <FieldGenerator fieldsList={fieldsCreateAccount}/>
-            <Form.Item label={"teste"} labelCol={{offset: 20, span: 20}}>
-              <Input/>
-            </Form.Item>
+            {page === 0 ? (<FieldGenerator fieldsList={personalInfoFields}/>) : page === 1 ? (
+                <FieldGenerator fieldsList={adressInfoFields} />) : (<></>)}
             <Row gutter={24}>
               <Col span={10}>
-                <Form.Item wrapperCol={{offset: 0, span: 30}}>
-                  <Button block size={"large"} type={"default"} onClick={() => prev()}><ArrowLeftOutlined/> </Button>
+                <Form.Item wrapperCol={{offset: 0, span: 15}}>
+                  <Button block
+                          size={"large"}
+                          type={"default"}
+                          onClick={() => prev()}
+                          icon={<ArrowLeftOutlined/>}
+                          shape={"circle"}
+                          id={"submitButton"}
+                  />
                 </Form.Item>
               </Col>
               <Col span={14}>
                 <Form.Item>
-                  <Button block size={"large"} type={"primary"} htmlType={"submit"}>Avançar</Button>
+                  <Button block
+                          shape={"round"}
+                          size={"large"}
+                          type={"primary"}
+                          htmlType={"submit"}
+                          id={"backButton"}
+                  >Avançar</Button>
                 </Form.Item>
               </Col>
             </Row>

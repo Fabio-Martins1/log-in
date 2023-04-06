@@ -1,8 +1,8 @@
-import {IFields} from "../Interfaces";
+import {IFields} from "../../Interfaces";
 
-const cpfRegex = /^\d{3}.?\d{3}.?\d{3}-?\d{2}$/
+const cpfRegex = /^(\d{3})(\d{3})(\d{3})(\d{2})$/
 
-export const fieldsCreateAccount: IFields[] = [
+export const personalInfoFields: IFields[] = [
 
   {
     type: "input",
@@ -14,7 +14,6 @@ export const fieldsCreateAccount: IFields[] = [
     colSpan: 24,
     wrapperSpan: 0,
     wrapperOffset: 0,
-    hasFeedback: false,
     rules: [{required: true, message: "Entre com o seu nome completo!"}]
   },
   {
@@ -25,7 +24,7 @@ export const fieldsCreateAccount: IFields[] = [
     placeholder: "Entre com o seu CPF",
     rowGutter: 0,
     colSpan: 24,
-    wrapperSpan: 0,
+    wrapperSpan: 24,
     wrapperOffset: 0,
     hasFeedback: true,
     rules: [{
@@ -41,15 +40,40 @@ export const fieldsCreateAccount: IFields[] = [
   {
     type: "date",
     name: "birthDate",
-    label: "",
+    label: "Data de nascimento",
     size: "large",
-    placeholder: "01/01/2023",
+    placeholder: "",
     format: "DD/MM/YYYY",
     rowGutter: 0,
     colSpan: 24,
-    wrapperSpan: 0,
-    wrapperOffset: 4,
-    hasFeedback: false,
+    wrapperSpan: 12,
+    wrapperOffset: 0,
     rules: [{required: true, type: "date", message: "Entre com sua data de nascimento!"}]
+  },
+  {
+    type: "input",
+    name: "email",
+    label: "E-mail",
+    size: "large",
+    placeholder: "Entre com o seu e-mail",
+    rowGutter: 0,
+    colSpan: 24,
+    wrapperSpan: 0,
+    wrapperOffset: 0,
+    hasFeedback: true,
+    rules: [{required: true, type: "email", message: "Entre com um e-mail válido!"}]
+  },
+  {
+    type: "input",
+    name: "reserveEmail",
+    label: "E-mail reserva",
+    size: "large",
+    placeholder: "Entre com o seu e-mail reserva",
+    rowGutter: 0,
+    colSpan: 24,
+    wrapperSpan: 0,
+    wrapperOffset: 0,
+    hasFeedback: true,
+    rules: [{required: true, type: "email", message: "Entre com um e-mail válido!"}]
   }
 ]
