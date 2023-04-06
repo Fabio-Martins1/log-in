@@ -1,24 +1,25 @@
 import React from "react";
-import {Button, Checkbox, Form, Input, notification} from "antd";
-import FormItem from "antd/es/form/FormItem";
-
-import {UserOutlined} from "@ant-design/icons";
 
 import styles from "./Login.module.css"
+
 import {useNavigate} from "react-router-dom";
+import {Button, Form, notification,} from "antd";
+import {LoginOutlined, UserAddOutlined} from "@ant-design/icons";
+import {FieldGenerator} from "../FieldGenerator";
+import {fieldsLogin} from "./FieldsLogin";
 
 export const Login = () => {
 
   const navigate = useNavigate()
-  function onFinish() {
-    notification.open({
-      message: "Tudo certo!"
+
+  const onFinish = (): void => {
+    notification.success({
+      message: "Bem-vindo!"
     });
     navigate("/")
   }
-
-  function onFinishFailed() {
-    notification.open({
+  const onFinishFailed = (): void => {
+    notification.error({
       message: "Algo deu errado!",
       description: "Preencha os campos corretamente!"
     });
@@ -35,32 +36,25 @@ export const Login = () => {
               onFinishFailed={onFinishFailed}
               autoComplete={"off"}
           >
-            <FormItem
-                label={"Usuário"}
-                name={"username"}
-                rules={[{required: true, type: "email", message: "Entre com um e-mail válido"}]}>
-              <Input
-                  size={"large"}
-                  placeholder={"Entre com o usuário"}
-                  prefix={<UserOutlined/>}/>
-            </FormItem>
-            <FormItem
-                label={"Senha"}
-                name={"password"}
-                rules={[{required: true, message: "Entre com uma senha válida"}]}>
-              <Input.Password
-                  size={"large"}
-              />
-            </FormItem>
-            <FormItem name={"remember"} valuePropName={"checked"}>
-              <Checkbox>Lembrar senha</Checkbox>
-            </FormItem>
-            <FormItem wrapperCol={{offset: 4, span: 16}}>
-              <Button block size={"large"} type={"primary"} htmlType={"submit"}>Entrar</Button>
-            </FormItem>
-            <FormItem wrapperCol={{offset: 7}}>
-              <Button type={"ghost"} href={"/createAccount"}>Registre-se</Button>
-            </FormItem>
+            <FieldGenerator fieldsList={fieldsLogin}/>
+            <Form.Item wrapperCol={{offset: 2, span: 20}}>
+              <Button block
+                      size={"large"}
+                      shape={"round"}
+                      type={"primary"}
+                      htmlType={"submit"}
+                      icon={<LoginOutlined/>}
+              >Entrar</Button>
+            </Form.Item>
+            <Form.Item wrapperCol={{offset: 6, span: 12}}>
+              <Button block
+                      size={"large"}
+                      shape={"round"}
+                      type={"default"}
+                      href={"/createAccount"}
+                      icon={<UserAddOutlined/>}
+              >Registre-se</Button>
+            </Form.Item>
           </Form>
         </div>
       </div>
